@@ -138,6 +138,22 @@
         <param name="z_clip_max" value="$(arg z_filter_max)"/>
     </group>
 
+    <group ns="pc_filter">
+        <param name="xpassthrough/filter_limit_min" value="-1" />
+        <param name="ypassthrough/filter_limit_min" value="-1" />
+        <param name="zpassthrough/filter_limit_min" value="0" />
+        <param name="xpassthrough/filter_limit_max" value="1" />
+        <param name="ypassthrough/filter_limit_max" value="1" />
+        <param name="zpassthrough/filter_limit_max" value="1" />
+        <param name="downsample" value="0.01" />
+
+        <param name="observed_frame_id" value="/kinect2_rgb_optical_frame" />
+        <param name="filtered_frame_id" value="/world" />
+        <param name="input_pc_topic" value="/kinect2/hd/points" />
+        <param name="output_pc_topic" value="/filtered_pc" />
+
+        <node name="kinect2_pc_filter" pkg="pc_filter" type="pc_filter" output="screen"/>
+    </group>
 
     <!-- RViz -->
     <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false" args="-d $(find launcher)/launch/moveit.rviz"
@@ -146,14 +162,10 @@
     </node>
 
 
-    <!-- Graspit -->
-    <node name="graspit_ros" pkg="graspit" type="graspit_simulator"  output="screen" args=" -p libgraspit_bci_plugin" >
-        <env name="GRASPIT" value="$(find graspit)/graspit_source"/>
-        <env name="CGDB_MODEL_ROOT" value="$(find graspit)/graspit_source/cgdb"/>
-        <env name="GRASPIT_PLUGIN_DIR" value="$(find graspit_bci_plugin)/../../devel/lib"/>
-        <env name="SPRITES_DIR" value="$(find graspit_bci_plugin)/sprites/"/>
-        <env name="LOG_DIR" value="$(find graspit_bci_plugin)/logs/"/>
-    </node>
+    <!-- Assistive UI -->
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+    <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher" />
+    <node name="assistive_grasping_ui" pkg="assistive_grasping_ui" type="assistiveGraspingUI.js" />
 
     <!-- Run Experiment -->
     <node name="run_experiment" type="run_experiment.py" pkg="run_experiment" />

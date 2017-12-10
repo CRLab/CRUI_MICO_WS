@@ -1,33 +1,33 @@
-# MICO_2016_WS
-Running the Mico project using block recognition and tf filtering
+# CRUI_MICO_WS
+The new MICO workspace that utilizes robowebtools
 
 ## Dependencies
-- You need to have the following packages installed
+In order to install this system, you'll need a series of dependencies on your system.
+1. gitman (https://github.com/jacebrowning/gitman)[https://github.com/jacebrowning/gitman]
+2. cuda (https://developer.nvidia.com/cuda-downloads)[https://developer.nvidia.com/cuda-downloads]
+3. libfreenect2 (https://github.com/OpenKinect/libfreenect2)[https://github.com/OpenKinect/libfreenect2]
+4. node and npm (https://nodejs.org/en/)[https://nodejs.org/en/]
+5. graspit-simulator (https://github.com/graspit-simulator/graspit.git)[https://github.com/graspit-simulator/graspit.git]
+6. ipdb (https://pypi.python.org/pypi/ipdb)[https://pypi.python.org/pypi/ipdb]
+7. pyassimp (https://github.com/assimp/assimp.git)[https://github.com/assimp/assimp.git]
+8. ROS (http://www.ros.org/)[http://www.ros.org/]
+
+Plus a series of apt dependencies:
 ```bash
-$ sudo apt-get install ros-indigo-desktop-full
-$ sudo apt-get install ros-indigo-moveit
-$ sudo apt-get install ros-indigo-ar-track-alvar
-```
-- Also libassimp3-dev won't work - so you'll need the 3.0 version of assimp (here)[https://sourceforge.net/projects/assimp/files/assimp-3.0/]
-- For building we use gitman. Make sure you have at least python3.5 installed (for trusty users see (here)[https://gist.github.com/larainema/a05d2f28cc7d944da6f6] and then rerun (get-pip.py)[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwioqIrc6NfWAhUJSyYKHXUKD-oQFggxMAI&url=https%3A%2F%2Fbootstrap.pypa.io%2Fget-pip.py&usg=AOvVaw0zKVO_zW0nkF7s0zdjWFNj] with python3.5).
-```bash
-$ pip install gitman --user
+libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev # Graspit
+
+build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev   
+
+libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-trac-ik* ros-kinetic-rosbridge-*
+
+cuda
 ```
 
-## Install
+For simplicity, here is a series of commands to install the entire project on a fresh Ubuntu 16.04 installation:
 ```bash
-$ gitman install
-```
+sudo apt install python3-pip
+sudo apt install python-pip
 
-## Running
-```bash
-$ source devel/setup.bash
-$ roslaunch launcher everything.launch
-$ roslaunch graspit_bci_plugin graspit_bci_plugin.launch
-```
-
-## Installing Dependencies on 16.04
-```bash
 cd
 pip3 install gitman --user
 
@@ -35,13 +35,19 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
+mv cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
 sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
 sudo apt-get update
 
-sudo apt install build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev   libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 cuda libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-trac-ik*
+sudo apt install cuda
+
+sudo apt install build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev   libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-trac-ik*
 
 pip2 install ipdb --user
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+nvm install node
 
 sudo rosdep init
 rosdep update
@@ -57,8 +63,8 @@ cd
 
 mkdir ros
 cd ros
-git clone git@github.com:CURG-BCI/MICO_2016_WS.git
-cd MICO_2016_WS
+git clone git@github.com:CRLab/CRUI_MICO_WS.git
+cd CRUI_MICO_WS
 
 mkdir dependencies
 cd dependencies
@@ -75,5 +81,12 @@ sudo rm -rf /usr/lib/python2.7/dist-packages/pyassimp
 cd ../../../..
 
 gitman install
-catkin_make
+catkin build
+cd src/assistive_grasping_ui
+npm install
 ```
+
+
+## Running
+All of the necessary configuration files are in src/launcher which contain parameters for moveit_commander, planners, environment configurations, and many other parameters. Any nodes that need to be brought up can be found in 'src/launcher/launch/everything.launch'. Because the launcher package is part of this workspace git repo make sure you don't mistakenly delete it when using gitman uninstall. gitman version 1.5b1 has a keep (-k) flag when using uninstall so the src directory will not be deleted when cleaning your workspace. 
+

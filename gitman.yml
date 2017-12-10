@@ -5,8 +5,8 @@ sources:
 - name: lcsr_tf_tools
   repo: 'https://github.com/jhu-lcsr/lcsr_tf_tools.git'
   rev: master
-- name: moveit_pick_place_action_server
-  repo: 'git@github.com:CRLab/moveit_pick_place_action_server.git'
+- name: curpp
+  repo: 'git@github.com:CRLab/curpp.git'
   rev: master
 - name: world_manager
   repo: 'git@github.com:CRLab/world_manager.git'

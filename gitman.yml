@@ -11,6 +11,9 @@ sources:
 - name: world_manager
   repo: 'git@github.com:CRLab/world_manager.git'
   rev: master
+- name: crui_manager
+  repo: 'git@github.com:CRLab/crui_manager.git'
+  rev: master
 
 # Vision includes
 - name: iai_kinect2

@@ -42,7 +42,7 @@ sudo apt-get update
 
 sudo apt install cuda
 
-sudo apt install build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev   libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-trac-ik*
+sudo apt install build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-rosbridge-* ros-kinetic-trac-ik*
 
 pip2 install ipdb --user
 
@@ -57,6 +57,17 @@ cd libfreenect2
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2
+sudo make -j$(nproc) install
+
+cd
+
+mkdir dependencies
+cd dependencies
+git clone https://github.com/graspit-simulator/graspit.git
+cd graspit
+mkdir build
+cd build
+cmake ..
 sudo make -j$(nproc) install
 
 cd
@@ -84,6 +95,7 @@ gitman install
 catkin build
 cd src/assistive_grasping_ui
 npm install
+bower install
 ```
 
 

@@ -41,20 +41,8 @@ sources:
   rev: master
 
 # Graspit input devices
-- name: external_controller_msgs
-  repo: git@github.com:CRLab/external_controller_msgs.git
-  rev: master
-- name: ros_physical_controller_manager
-  repo: git@github.com:CRLab/ros_physical_controller_manager.git
-  rev: master
-- name: semg_ros_controller
-  repo: git@github.com:CRLab/semg_ros_controller.git
-  rev: master
-- name: ultimate_switch_ros_controller
-  repo: git@github.com:CRLab/ultimate_switch_ros_controller.git
-  rev: master
-- name: alexa_ros_controller
-  repo: git@github.com:CRLab/alexa_ros_controller.git
+- name: physical_ros_controllers
+  repo: git@github.com:CRLab/physical_ros_controllers.git
   rev: master
 
 # UI Includes

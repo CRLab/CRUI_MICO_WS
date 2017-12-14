@@ -5,7 +5,6 @@
     <arg name="use_kinect_hw" default="True" />
     <arg name="ros_bag_filename" default="" />
 
-
     <!-- Bounds on environment -->
     <arg name="x_filter_min" value="0.1" />
     <arg name="y_filter_min" value="-0.6" />
@@ -29,71 +28,60 @@
         <arg name="show_rviz" value="false" />
     </include>
 
-
     <!-- Trajectory Planners -->
-    <!--<group ns="crui_manager">-->
-            <param name="analyze_grasp_topic" type="string" value="/crui_manager/analyze_grasp" />
-            <param name="execute_grasp_topic" type="string" value="/crui_manager/execute_grasp" />
-            <param name="run_recognition_topic" type="string" value="/crui_manager/run_recognition" />
+    <!--<param name="grasp_approach_tran_frame" type="string" value="/approach_tran" />-->
+    <!--<param name="world_frame" type="string" value="/world" />-->
 
-            <param name="grasp_approach_tran_frame" type="string" value="/approach_tran" />
-            <param name="world_frame" type="string" value="/world" />
+    <!--<param name="arm_move_group_name" type="string" value="arm" />-->
+    <!--<param name="gripper_move_group_name" type="string" value="gripper" />-->
 
-            <param name="arm_move_group_name" type="string" value="arm" />
-            <param name="gripper_move_group_name" type="string" value="gripper" />
+    <!--<param name="analyzer_planner_id" type="string" value="[PRMkConfigDefault]" />-->
+    <!--<param name="executor_planner_id" type="string" value="[BiRRTkConfigDefault]" />-->
+    <!--<param name="allowed_analyzing_time" type="double" value="2" />-->
+    <!--<param name="allowed_execution_time" type="double" value="8" />-->
 
-            <param name="analyzer_planner_id" type="string" value="[PRMkConfigDefault]" />
-            <param name="executor_planner_id" type="string" value="[BiRRTkConfigDefault]" />
-            <param name="allowed_analyzing_time" type="double" value="2" />
-            <param name="allowed_execution_time" type="double" value="8" />
+    <!--<param name="final_block_position_x" type="double" value="0.2" />-->
+    <!--<param name="final_block_position_y" type="double" value="0.3" />-->
+    <!--<param name="final_block_position_z" type="double" value="0.2" />-->
 
-            <param name="final_block_position_x" type="double" value="0.2" />
-            <param name="final_block_position_y" type="double" value="0.3" />
-            <param name="final_block_position_z" type="double" value="0.2" />
+    <!--<param name="pre_grasp_approach_direction_frame_id" type="string" value="/approach_tran" />-->
+    <!--<param name="pre_grasp_approach_direction_x" type="double" value="0" />-->
+    <!--<param name="pre_grasp_approach_direction_y" type="double" value="0" />-->
+    <!--<param name="pre_grasp_approach_direction_z" type="double" value="1" />-->
 
-            <param name="pre_grasp_approach_direction_frame_id" type="string" value="/approach_tran" />
-            <param name="pre_grasp_approach_direction_x" type="double" value="0" />
-            <param name="pre_grasp_approach_direction_y" type="double" value="0" />
-            <param name="pre_grasp_approach_direction_z" type="double" value="1" />
+    <!--<param name="post_grasp_retreat_direction_frame_id" type="string" value="/world" />-->
+    <!--<param name="post_grasp_retreat_direction_x" type="double" value="0" />-->
+    <!--<param name="post_grasp_retreat_direction_y" type="double" value="0" />-->
+    <!--<param name="post_grasp_retreat_direction_z" type="double" value="1" />-->
 
-            <param name="post_grasp_retreat_direction_frame_id" type="string" value="/world" />
-            <param name="post_grasp_retreat_direction_x" type="double" value="0" />
-            <param name="post_grasp_retreat_direction_y" type="double" value="0" />
-            <param name="post_grasp_retreat_direction_z" type="double" value="1" />
+    <!--<rosparam param="pre_grasp_goal_point_effort">[50.0, 50.0]</rosparam>-->
+    <!--<rosparam param="pre_grasp_goal_point_positions">[0.0, 0.0]</rosparam>-->
+    <!--<param name="pre_grasp_goal_point_time_from_start_secs" type="double" value="0" />-->
+    <!--<rosparam param="pre_grasp_joint_names">[m1n6s200_joint_finger_1, m1n6s200_joint_finger_2]</rosparam>-->
 
-            <rosparam param="pre_grasp_goal_point_effort">[50.0, 50.0]</rosparam>
-            <rosparam param="pre_grasp_goal_point_positions">[0.0, 0.0]</rosparam>
-            <param name="pre_grasp_goal_point_time_from_start_secs" type="double" value="0" />
-            <rosparam param="pre_grasp_joint_names">[m1n6s200_joint_finger_1, m1n6s200_joint_finger_2]</rosparam>
+    <!--<rosparam param="grasp_goal_point_effort">[50.0, 50.0]</rosparam>-->
+    <!--<rosparam param="grasp_goal_point_positions">[1.2, 1.2]</rosparam>-->
+    <!--<param name="grasp_goal_point_time_from_start_secs" type="double" value="0" />-->
 
-            <rosparam param="grasp_goal_point_effort">[50.0, 50.0]</rosparam>
-            <rosparam param="grasp_goal_point_positions">[1.2, 1.2]</rosparam>
-            <param name="grasp_goal_point_time_from_start_secs" type="double" value="0" />
+    <!--<rosparam param="grasp_posture_joint_names">[m1n6s200_joint_finger_1, m1n6s200_joint_finger_2]</rosparam>-->
 
-            <rosparam param="grasp_posture_joint_names">[m1n6s200_joint_finger_1, m1n6s200_joint_finger_2]</rosparam>
+    <!--<param name="pre_grasp_approach_min_distance" type="double" value="0.05" />-->
+    <!--<param name="pre_grasp_approach_desired_distance" type="double" value="0.1" />-->
 
-            <param name="pre_grasp_approach_min_distance" type="double" value="0.05" />
-            <param name="pre_grasp_approach_desired_distance" type="double" value="0.1" />
+    <!--<param name="post_grasp_retreat_min_distance" type="double" value="0.05" />-->
+    <!--<param name="post_grasp_retreat_desired_distance" type="double" value="0.1" />-->
 
-            <param name="post_grasp_retreat_min_distance" type="double" value="0.05" />
-            <param name="post_grasp_retreat_desired_distance" type="double" value="0.1" />
+    <!--<param name="max_contact_force" type="double" value="-1" />-->
 
-            <param name="max_contact_force" type="double" value="-1" />
-
-            <!--<rosparam command="load" file="$(find m1n6s200_moveit_config)/config/kinematics.yaml"/>-->
-
-            <node name="crui_manager" pkg="graspit_moveit_controller" type="crui_manager.py" output="screen" >
-                <remap from="/joint_states"   to="/m1n6s200_driver/out/joint_state" />
-            </node>
-
-      <!--</group>-->
+    <!--<node name="crui_manager" pkg="crui_manager" type="crui_node.py" output="screen" >-->
+        <!--<remap from="/joint_states"   to="/m1n6s200_driver/out/joint_state" />-->
+    <!--</node>-->
 
     <!-- World manager node-->
     <group ns="world_manager">
         <!--Load the walls for your workspace-->
         <rosparam command="load" file="$(find launcher)/configs/mico.workspace.yaml"/>
 
-        <param name="planning_scene_topic" value="/get_planning_scene"/>
         <node name="world_manager" pkg="world_manager" type="world_manager_server.py" output="screen"/>
     </group>
 
@@ -108,7 +96,6 @@
         <arg name="fps_limit" value="5" />
         <arg name="calib_path" value="$(find launcher)/data/" />
     </include>
-
 
     <!-- TF Broadcasters -->
     <node pkg="filter_tf" type="filter_tf.py" name="filter_tf_marker8_kinect2" args="/ar_marker_8 /kinect2_link 10 --destination_frame /world"/>
@@ -161,22 +148,21 @@
         <rosparam command="load" file="$(find m1n6s200_moveit_config)/config/kinematics.yaml"/>
     </node>
 
-
     <!-- Assistive UI -->
     <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
     <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher" />
     <node name="assistive_grasping_ui" pkg="assistive_grasping_ui" type="assistiveGraspingUI.js" />
 
-    <!-- Run Experiment -->
-    <node name="run_experiment" type="run_experiment.py" pkg="run_experiment" />
-
-    <!-- Alexa Controller -->
-    <!-- This one you have to run on your own, unfortunately -->
-    <!-- TODO: Integrate Xuelong's addition -->
+    <!-- ROS Input Controllers -->
+    <group ns="physical_ros_controllers">
+        <!-- Controller Manager -->
+        <node name="controller_manager" pkg="ros_physical_controller_manager" type="ros_physical_controller_manager_node.py" output="screen"/>
+        <!-- Controllers -->
+        <node name="alexa_ros_node" pkg="alexa_ros_controller" type="alexa_ros_node.js" output="screen"/>
+        <node name="switch_ros_node" pkg="switch_ros_controller" type="switch_ros_node.py" output="screen"/>
+        <node name="semg_ros_node" pkg="semg_ros_controller" type="semg_ros_node.js" output="screen"/>
+    </group>
 
     <param name="/move_group/trajectory_execution/execution_duration_monitoring" value="false" />
-    <!--<param name="/move_group/allowed_execution_duration_scaling" value="10.0"/>-->
-    <!--<param name="/move_group/trajectory_execution/allowed_execution_duration_scaling" value="10.0"/>-->
-    <!--<param name="/move_group/trajectory_execution/allowed_start_tolerance" value="0.1"/>-->
 
 </launch>

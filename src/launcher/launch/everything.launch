@@ -77,6 +77,9 @@
         <!--<remap from="/joint_states"   to="/m1n6s200_driver/out/joint_state" />-->
     <!--</node>-->
 
+    <!-- Graspit Interface -->
+    <include file="$(find graspit_interface)/launch/graspit_interface.launch"/>
+
     <!-- World manager node-->
     <group ns="world_manager">
         <!--Load the walls for your workspace-->

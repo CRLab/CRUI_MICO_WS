@@ -78,7 +78,7 @@
     <!--</node>-->
 
     <!-- Graspit Interface -->
-    <include file="$(find graspit_interface)/launch/graspit_interface.launch"/>
+    <!--<include file="$(find graspit_interface)/launch/graspit_interface.launch"/>-->
 
     <!-- World manager node-->
     <group ns="world_manager">

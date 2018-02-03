@@ -44,9 +44,7 @@ sudo apt install cuda
 
 sudo apt install build-essential libturbojpeg libtool autoconf libudev-dev cmake mesa-common-dev freeglut3-dev libxrandr-dev doxygen libxi-dev libjpeg-turbo8-dev pkg-config beignet-dev libglfw3-dev libusb-1.0-0-dev libva-dev libjpeg-dev libopenni2-dev ros-kinetic-desktop-full ros-kinetic-moveit ros-kinetic-ar-track-alvar ros-kinetic-manipulation-msgs ros-kinetic-pcl-ros ocl-icd-libopencl1 libqt4-dev libqt4-opengl-dev libqt4-sql-psql libcoin80-dev libsoqt4-dev libblas-dev liblapack-dev libqhull-dev libeigen3-dev ros-kinetic-rosbridge-* ros-kinetic-trac-ik*
 
-pip2 install ipdb --user
-pip2 install pygame --user
-pip2 install typing --user
+pip2 install ipdb pygame typing pyquaternion promise --user
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 nvm install node
@@ -93,11 +91,10 @@ python setup.py install --user
 sudo rm -rf /usr/lib/python2.7/dist-packages/pyassimp
 cd ../../../..
 
+npm install bower -g
 gitman install
 catkin build
 cd src/assistive_grasping_ui
-npm install
-bower install
 ```
 
 
